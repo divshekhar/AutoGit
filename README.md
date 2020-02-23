@@ -1,5 +1,8 @@
 # Description
 AutoGit is a Python Script, Helps you create and initialize git projects without any commands.
+# Requirements
+1. Git (Installed)
+2. Github Account
 # Run
 > python autogit.py
 # Screenshots
