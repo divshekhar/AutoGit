@@ -1,5 +1,5 @@
 from tkinter import *
-import tkfilebrowser
+from tkinter import filedialog
 import os.path
 from os import path
 import subprocess
@@ -52,7 +52,7 @@ def switch():
 
 
 def browse():
-    feedback = tkfilebrowser.askopendirname()
+    feedback = filedialog.askdirectory()
     filePath.set(feedback)
 
 
