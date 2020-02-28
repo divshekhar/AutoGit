@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 from tkinter import filedialog
 import os.path
 from os import path
@@ -111,69 +112,72 @@ def remove():
     subprocess.call(command, shell=True)
     statusLabel.configure(text=f"{removeRepo} Removed.")
 
+#       Radio Buttons
+#       -------------
 
-create_button = Radiobutton(root, text="Create Repo", variable=switch_variable, background="light blue", command=switch,
-                            indicatoron=False, value="create", width=8, padx=10, pady=5)
+
+create_button = ttk.Radiobutton(root, text="Create Repo", variable=switch_variable,
+                                command=switch, value="create", width=18)
 create_button.grid(row=0, column=1)
 
-remove_button = Radiobutton(root, text="Remove Repo", variable=switch_variable, background="light blue", command=switch,
-                            indicatoron=False, value="remove", width=8, padx=10, pady=5)
+remove_button = ttk.Radiobutton(root, text="Remove Repo", variable=switch_variable,
+                                command=switch, value="remove", width=18)
 remove_button.grid(row=0, column=2)
 
 #           Git Username
 #           ------------
-gitUsernameLabel = Label(root, text="GitHub Username :").grid(
+gitUsernameLabel = ttk.Label(root, text="GitHub Username :").grid(
     row=1, column=0, padx=10, pady=10)
-gitUsernameEntry = Entry(root, width=50)
+gitUsernameEntry = ttk.Entry(root, width=50)
 gitUsernameEntry.grid(row=1, column=1, columnspan=2, padx=10, pady=10)
 
 #           Git Password
 #           ------------
 
 # Smiley \U0001F602
-gitPasswordLabel = Label(root, text="GitHub Password :").grid(
+gitPasswordLabel = ttk.Label(root, text="GitHub Password :").grid(
     row=2, column=0, padx=10, pady=10)
-gitPasswordEntry = Entry(root, show="=", width=50)
+gitPasswordEntry = ttk.Entry(root, show="=", width=50)
 gitPasswordEntry.grid(row=2, column=1, columnspan=2, padx=10, pady=10)
 
 #       Project/Repository Name
 #           ------------
 
-projectNameLabel = Label(
+projectNameLabel = ttk.Label(
     root, text="Project/Repo Name :")
 
 
-projectNameEntry = Entry(root, width=50)
+projectNameEntry = ttk.Entry(root, width=50)
 
 
 #          Path
 #      -------------
-pathLabel = Label(
+pathLabel = ttk.Label(
     root, text="Path :")
 
 
-pathEntry = Entry(root, width=50, textvariable=filePath)
+pathEntry = ttk.Entry(root, width=50, textvariable=filePath)
 
 
 #           Create Button
 #        --------------------
 
-createButton = Button(root, text="Create", command=create)
+createButton = ttk.Button(root, text="Create", command=create)
 
 #           Remove Button
 #        --------------------
 
-removeButton = Button(root, text="Remove", command=remove)
+removeButton = ttk.Button(root, text="Remove", command=remove)
 
 #           Browse Button
 #        --------------------
 
-browseButton = Button(root, text="Browse", command=browse)
+browseButton = ttk.Button(root, text="Browse", command=browse)
 
 
 #      Remove Project/Repository
 #           ------------
-removeProject = Label(
+removeProject = ttk.Label(
     root, text="Remove Repository :")
 
 
@@ -182,14 +186,14 @@ removeProjectEntry = Entry(root, width=50)
 
 #               Status
 #        --------------------
-statusLabel = Label(root, text="Status :-")
+statusLabel = ttk.Label(root, text="Status :-")
 statusLabel.grid(row=7, column=0, padx=10, pady=10)
 
 
 #           Status Bar
 #        --------------------
-statusbar = Label(root, text="Developed by Divyanshu Shekhar.", bd=1,
-                  relief=SUNKEN, anchor=W, padx=10, pady=10)
+statusbar = ttk.Label(root, text="Developed by Divyanshu Shekhar.",
+                      relief=SUNKEN, anchor=W)
 statusbar.grid(row=0, column=0, padx=10, pady=10)
 
 root.mainloop()
