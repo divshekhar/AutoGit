@@ -11,6 +11,7 @@ root = Tk()
 root.title("Jarvis")
 root.geometry('800x500')
 root.title("AutoGit")
+root.iconbitmap('./img/github.ico')
 
 filePath = StringVar()
 switch_variable = StringVar()
