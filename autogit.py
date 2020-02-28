@@ -9,8 +9,22 @@ isClicked = False
 
 
 root = Tk()
+
+# StatusBar Frame
+statusbar_frame = ttk.Frame(root)
+statusbar_frame.pack(side=BOTTOM)
+# RadioButton Frame
+radiobutton_frame = ttk.Frame(root)
+radiobutton_frame.pack(padx=10, pady=10)
+# Entry Frame
+entry_frame = ttk.Frame(root)
+entry_frame.pack()
+# Button Frame
+button_frame = ttk.Frame(root)
+button_frame.pack()
+
 root.title("Jarvis")
-root.geometry('800x500')
+root.geometry('700x400')
 root.title("AutoGit")
 root.iconbitmap('./img/github.ico')
 
@@ -28,29 +42,29 @@ def switch():
     if switchVar == 'create':
         removeProject.grid_forget()
         removeProjectEntry.grid_forget()
-        removeButton.grid_forget()
-        projectNameLabel.grid(row=3, column=0, padx=10, pady=10)
+        removeButton.pack_forget()
+        projectNameLabel.grid(row=2, column=0, padx=10, pady=10)
         projectNameEntry.grid(
-            row=3, column=1, columnspan=2, padx=10, pady=10)
-        pathLabel.grid(row=5, column=0, padx=10, pady=10)
+            row=2, column=1, columnspan=2, padx=10, pady=10)
+        pathLabel.grid(row=3, column=0, padx=10, pady=10)
         pathEntry.grid(
-            row=5, column=1, columnspan=2, padx=10, pady=10)
-        createButton.grid(
-            row=6, column=2, padx=10, pady=10)
-        browseButton.grid(
-            row=6, column=1, padx=10, pady=10)
+            row=3, column=1, columnspan=2, padx=10, pady=10)
+        createButton.pack(
+            side=RIGHT, padx=10, pady=10)
+        browseButton.pack(
+            side=RIGHT, padx=10, pady=10)
     elif switchVar == 'remove':
         projectNameLabel.grid_forget()
         projectNameEntry.grid_forget()
         pathLabel.grid_forget()
         pathEntry.grid_forget()
-        createButton.grid_forget()
-        browseButton.grid_forget()
-        removeProject.grid(row=4, column=0, padx=10, pady=10)
+        createButton.pack_forget()
+        browseButton.pack_forget()
+        removeProject.grid(row=2, column=0, padx=10, pady=10)
         removeProjectEntry.grid(
-            row=4, column=1, columnspan=2, padx=10, pady=10)
-        removeButton.grid(
-            row=6, column=2, padx=10, pady=10)
+            row=2, column=1, columnspan=2, padx=10, pady=10)
+        removeButton.pack(
+            side=RIGHT, padx=10, pady=10)
 
 
 def browse():
@@ -116,84 +130,80 @@ def remove():
 #       -------------
 
 
-create_button = ttk.Radiobutton(root, text="Create Repo", variable=switch_variable,
+create_button = ttk.Radiobutton(radiobutton_frame, text="Create Repo", variable=switch_variable,
                                 command=switch, value="create", width=18)
-create_button.grid(row=0, column=1)
+create_button.pack(side=LEFT)
 
-remove_button = ttk.Radiobutton(root, text="Remove Repo", variable=switch_variable,
+remove_button = ttk.Radiobutton(radiobutton_frame, text="Remove Repo", variable=switch_variable,
                                 command=switch, value="remove", width=18)
-remove_button.grid(row=0, column=2)
+remove_button.pack(side=LEFT)
 
 #           Git Username
 #           ------------
-gitUsernameLabel = ttk.Label(root, text="GitHub Username :").grid(
-    row=1, column=0, padx=10, pady=10)
-gitUsernameEntry = ttk.Entry(root, width=50)
-gitUsernameEntry.grid(row=1, column=1, columnspan=2, padx=10, pady=10)
+gitUsernameLabel = ttk.Label(entry_frame, text="GitHub Username :").grid(
+    row=0, column=0, padx=10, pady=10)
+gitUsernameEntry = ttk.Entry(entry_frame, width=50)
+gitUsernameEntry.grid(row=0, column=1, padx=10, pady=10)
 
 #           Git Password
 #           ------------
 
 # Smiley \U0001F602
-gitPasswordLabel = ttk.Label(root, text="GitHub Password :").grid(
-    row=2, column=0, padx=10, pady=10)
-gitPasswordEntry = ttk.Entry(root, show="=", width=50)
-gitPasswordEntry.grid(row=2, column=1, columnspan=2, padx=10, pady=10)
+gitPasswordLabel = ttk.Label(entry_frame, text="GitHub Password :").grid(
+    row=1, column=0, padx=10, pady=10)
+gitPasswordEntry = ttk.Entry(entry_frame, width=50, show="=")
+gitPasswordEntry.grid(row=1, column=1, padx=10, pady=10)
 
 #       Project/Repository Name
 #           ------------
 
 projectNameLabel = ttk.Label(
-    root, text="Project/Repo Name :")
-
-
-projectNameEntry = ttk.Entry(root, width=50)
+    entry_frame, text="Project/Repo Name :")
+projectNameEntry = ttk.Entry(entry_frame, width=50)
 
 
 #          Path
 #      -------------
 pathLabel = ttk.Label(
-    root, text="Path :")
+    entry_frame, text="Path :")
 
 
-pathEntry = ttk.Entry(root, width=50, textvariable=filePath)
+pathEntry = ttk.Entry(entry_frame, width=50, textvariable=filePath)
 
 
 #           Create Button
 #        --------------------
 
-createButton = ttk.Button(root, text="Create", command=create)
+createButton = ttk.Button(button_frame, text="Create", command=create)
 
 #           Remove Button
 #        --------------------
 
-removeButton = ttk.Button(root, text="Remove", command=remove)
+removeButton = ttk.Button(button_frame, text="Remove", command=remove)
 
 #           Browse Button
 #        --------------------
 
-browseButton = ttk.Button(root, text="Browse", command=browse)
+browseButton = ttk.Button(button_frame, text="Browse", command=browse)
 
 
 #      Remove Project/Repository
 #           ------------
 removeProject = ttk.Label(
-    root, text="Remove Repository :")
-
-
-removeProjectEntry = Entry(root, width=50)
+    entry_frame, text="Remove Repository :")
+removeProjectEntry = ttk.Entry(entry_frame, width=50)
 
 
 #               Status
 #        --------------------
-statusLabel = ttk.Label(root, text="Status :-")
-statusLabel.grid(row=7, column=0, padx=10, pady=10)
+statusLabel = ttk.Label(entry_frame, text="Status :-")
+statusLabel.grid(row=5, column=0, padx=10, pady=10)
 
 
 #           Status Bar
 #        --------------------
-statusbar = ttk.Label(root, text="Developed by Divyanshu Shekhar.",
-                      relief=SUNKEN, anchor=W)
-statusbar.grid(row=0, column=0, padx=10, pady=10)
+statusbar = ttk.Label(statusbar_frame, text="Developed by Divyanshu Shekhar.",
+                      relief=GROOVE, anchor=E)
+statusbar.pack(side=BOTTOM, fill=X, padx=10, pady=10)
 
 root.mainloop()
