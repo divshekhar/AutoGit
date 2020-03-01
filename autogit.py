@@ -5,14 +5,10 @@ import os.path
 from os import path
 import subprocess
 
-isClicked = False
-
 
 root = Tk()
 
-# StatusBar Frame
-statusbar_frame = ttk.Frame(root)
-statusbar_frame.pack(side=BOTTOM)
+
 # RadioButton Frame
 radiobutton_frame = ttk.Frame(root)
 radiobutton_frame.pack(padx=10, pady=10)
@@ -23,7 +19,6 @@ entry_frame.pack()
 button_frame = ttk.Frame(root)
 button_frame.pack()
 
-root.title("Jarvis")
 root.geometry('700x400')
 root.title("AutoGit")
 root.iconbitmap('./img/github.ico')
@@ -202,8 +197,13 @@ statusLabel.grid(row=5, column=0, padx=10, pady=10)
 
 #           Status Bar
 #        --------------------
-statusbar = ttk.Label(statusbar_frame, text="Developed by Divyanshu Shekhar.",
-                      relief=GROOVE, anchor=E)
-statusbar.pack(side=BOTTOM, fill=X, padx=10, pady=10)
+statusbar = ttk.Label(root, text="Developed by Divyanshu Shekhar.",
+                      relief=GROOVE, anchor=W)
+statusbar.pack(side=BOTTOM, fill=X)
+
+#           Version
+#           -------
+version_label = ttk.Label(root, text="Version 1.0.1", relief=RIDGE, anchor=E)
+version_label.pack(side=BOTTOM, fill=X)
 
 root.mainloop()
